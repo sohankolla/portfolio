@@ -1,2 +1,3 @@
-# portfolio
-Repo for sohankolla.com
+# My Portfolio
+Repository for sohankolla.com
+Check it out :)
