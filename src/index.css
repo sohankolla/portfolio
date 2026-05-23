@@ -17,7 +17,12 @@ html, body {
 }
 
 #container {
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 section {
@@ -206,4 +211,14 @@ html {
     -o-animation: move-clouds-back 500s linear infinite;
     -webkit-animation: move-clouds-back 500s linear infinite;
     animation: move-clouds-back 500s linear infinite;
+}
+
+/* hollow text */
+.transparent-text {
+    color: transparent !important;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.8);
+    text-stroke: 2px rgba(0, 0, 0, 0.8);
+    -webkit-text-fill-color: transparent !important;
+    text-shadow: none;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
 }

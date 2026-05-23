@@ -1,14 +1,8 @@
 import Project from "./Project.jsx"
 import Experience from "./Experience.jsx"
-import Navigation from "./Navigation.jsx"
 import { useState, useEffect } from 'react'
 
 export default function App() {
-  const [showResumeModal, setShowResumeModal] = useState(false)
-
-  const openResumeModal = () => setShowResumeModal(true)
-  const closeResumeModal = () => setShowResumeModal(false)
-
   // Custom scrollbar state
   const [scrollDirection, setScrollDirection] = useState('down')
   const [scrollPercentage, setScrollPercentage] = useState(10)
@@ -64,192 +58,61 @@ export default function App() {
   }, [])
 
   return (
-    <div className="flex flex-col min-h-screen relative" id="container">
-      {/* Animated Starry Background */}
+    <div className="flex flex-col h-screen overflow-hidden relative" id="container">
+      {/* starry night background */}
       <div className="stars"></div>
       <div className="twinkling"></div>
       <div className="clouds"></div>
       <div className="clouds2"></div>
-      
-      {/* Navigation */}
-      <Navigation />
-      
-      <main className="flex-grow">
-        {/* Hero Section */}
-        <section id="home" className="landing relative z-10 min-h-screen flex flex-col justify-center items-center text-center px-4">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+
+      <main className="flex-1 flex items-center justify-center">
+        <section id="home" className="landing relative z-10 flex flex-col justify-center items-center text-center px-4 w-full">
+          <h1 className="text-8xl md:text-8xl font-bold mb-4 transparent-text">
             Sohan Kolla
           </h1>
           <h2 className="text-2xl md:text-3xl text-gray-300 mb-6">
-            Full-Stack Software Developer
+            Software Developer | DevOps Engineer | Motorcycle Enthusiast
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mb-8">
-            Computer Science student at Queen's University with experience in full-stack development, 
-            specializing in modern web technologies and secure, scalable applications.
+            Final year Computer Science student at Queen's University.<br/>
+            Strong experience in Full-Stack Development and DevOps Engineering.<br/>
+            Passionate for System Design and Architecture.
           </p>
-          
-          <div className="flex flex-wrap gap-4 justify-center mb-8">
-            <a href="mailto:sohan.kolla03@gmail.com" className="bg-transparent border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-black px-6 py-3 rounded-lg transition-colors duration-200">
-              Contact Me
-            </a>
-            <button 
-              onClick={openResumeModal}
+
+          <div className="flex gap-4 justify-center mb-8">
+            <a 
+              href="/Sohan Kolla - Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black px-6 py-3 rounded-lg transition-colors duration-200"
             >
-              View Resume
-            </button>
-            <a href="https://linkedin.com/in/sohan-kolla" target="_blank" rel="noopener noreferrer" className="bg-transparent border-2 border-gray-400 text-gray-400 hover:bg-gray-400 hover:text-black px-6 py-3 rounded-lg transition-colors duration-200">
-              LinkedIn
+              Resume
             </a>
-            <a href="https://github.com/sohankolla" target="_blank" rel="noopener noreferrer" className="bg-transparent border-2 border-gray-400 text-gray-400 hover:bg-gray-400 hover:text-black px-6 py-3 rounded-lg transition-colors duration-200">
+            <a
+              href="https://github.com/sohankolla"
+              target="_blank"
+              rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white hover:bg-white hover:text-black px-6 py-3 rounded-lg transition-colors duration-200"
+            >
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                className="w-5 h-5 fill-current"
+              >
+                <path d="M12 0.5C5.65 0.5 0.5 5.65 0.5 12c0 5.08 3.29 9.38 7.86 10.9.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.69-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.3 1.18-3.11-.12-.29-.51-1.44.11-3 0 0 .97-.31 3.18 1.18a11.03 11.03 0 0 1 5.8 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.56.23 2.71.11 3 .73.81 1.18 1.85 1.18 3.11 0 4.43-2.69 5.41-5.25 5.69.41.36.78 1.07.78 2.16 0 1.56-.01 2.81-.01 3.19 0 .31.21.66.8.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35 0.5 12 0.5Z" />
+              </svg>
               GitHub
             </a>
           </div>
         </section>
-
-        {/* About Section */}
-        <section id="aboutMe" className="relative z-10 py-20 px-4 max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 text-white">About Me</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-transparent border-2 border-blue-400 rounded-lg p-6 backdrop-blur-sm">
-              <h3 className="text-2xl font-bold mb-4 text-blue-400">Education</h3>
-              <div className="space-y-2">
-                <h4 className="text-xl font-semibold text-white">Queen's University</h4>
-                <p className="text-gray-300">Bachelor of Computer Science (Honours)</p>
-                <p className="text-gray-400">Sept 2022 – Apr 2026 | Kingston, Ontario</p>
-              </div>
-            </div>
-            
-            <div className="bg-transparent border-2 border-purple-400 rounded-lg p-6 backdrop-blur-sm">
-              <h3 className="text-2xl font-bold mb-4 text-purple-400">Contact</h3>
-              <div className="space-y-2 text-gray-300">
-                <p>📧 sohan.kolla03@gmail.com</p>
-                <p>📱 647-550-3760</p>
-                <p>🌍 Kingston, Ontario</p>
-              </div>
-            </div>
-          </div>
-          
-          {/* Technical Skills */}
-          <div className="mt-12 bg-transparent border-2 border-green-400 rounded-lg p-6 backdrop-blur-sm">
-            <h3 className="text-2xl font-bold mb-6 text-green-400">Technical Skills</h3>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div>
-                <h4 className="text-lg font-semibold mb-3 text-white">Languages</h4>
-                <div className="flex flex-wrap gap-2">
-                  {['Java', 'Python', 'JavaScript', 'TypeScript', 'Go', 'SQL', 'C', 'C++', 'HTML', 'CSS'].map((skill) => (
-                    <span key={skill} className="bg-blue-600 text-white text-sm px-2 py-1 rounded">{skill}</span>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <h4 className="text-lg font-semibold mb-3 text-white">Technologies & Tools</h4>
-                <div className="flex flex-wrap gap-2">
-                  {['React', 'Vue', 'Spring Boot', 'Flask', 'Git', 'Azure', 'PostgreSQL', 'MySQL', 'Tailwind'].map((skill) => (
-                    <span key={skill} className="bg-purple-600 text-white text-sm px-2 py-1 rounded">{skill}</span>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <h4 className="text-lg font-semibold mb-3 text-white">Specialties</h4>
-                <div className="flex flex-wrap gap-2">
-                  {['Full-Stack Development', 'Database Design', 'API Development', 'Testing', 'Security'].map((skill) => (
-                    <span key={skill} className="bg-green-600 text-white text-sm px-2 py-1 rounded">{skill}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Experience Section */}
-        <section id="experience" className="relative z-10 py-20 px-4 max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 text-white">Experience</h2>
-          <Experience 
-            title="Full-Stack Software Developer"
-            company="Elara Global Taiko Server"
-            startDate="May 2024"
-            endDate="Aug 2024"
-            description="Developed a full-stack web application using Vue, TypeScript, Go, and SQLite for a game development team. Enhanced performance by reducing first-load file size by 89% and load time by 92%. Implemented secure RESTful APIs and optimized SQL queries, reducing execution time by 45% while maintaining 100% data integrity for 125,000+ records."
-            technologies="Vue, TypeScript, Go, SQLite, Tailwind CSS, Git, RESTful APIs"
-          />
-        </section>
-
-        {/* Projects Section */}
-        <section id="projects" className="relative z-10 py-20 px-4 max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 text-white">Projects</h2>
-          
-          <Project 
-            name="Password Manager Chrome Extension"
-            description="Full-stack password manager with Chrome extension featuring secure authentication, AES encryption for 100+ passwords, and auto-fill functionality. Built with React frontend and Java Spring Boot backend, deployed on Azure with 99.9% uptime."
-            technologies="TypeScript, React, Java, Spring Boot, PostgreSQL, Azure, AES Encryption"
-            demoLink=""
-            repoLink=""
-          />
-          
-          <Project 
-            name="Pharmacy Management System"
-            description="Comprehensive pharmacy management system for prescription and inventory management. Achieved 100% code coverage with Pytest, reduced task completion times by 40%, and validated 50+ test cases with Selenium integration testing."
-            technologies="Python, Flask, SQLite, Pytest, Selenium, HTML, CSS"
-            demoLink=""
-            repoLink=""
-          />
-        </section>
       </main>
 
-      <footer className="relative z-10 py-12 px-4 border-t border-gray-700">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <h3 className="text-xl font-bold text-white mb-2">Sohan Kolla</h3>
-              <p className="text-gray-400">Full-Stack Software Developer</p>
-            </div>
-            
-            <div className="flex space-x-6">
-              <a href="mailto:sohan.kolla03@gmail.com" className="text-gray-400 hover:text-white transition-colors duration-200">
-                Email
-              </a>
-              <a href="https://linkedin.com/in/sohan-kolla" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-200">
-                LinkedIn
-              </a>
-              <a href="https://github.com/sohankolla" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-200">
-                GitHub
-              </a>
-            </div>
-          </div>
-          
-          <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
-            © 2025 Sohan Kolla. All rights reserved.
-          </div>
-        </div>
+      <footer className="relative z-10 py-4 px-4 max-w-6xl mx-auto text-center text-gray-400">
+        © 2026 Sohan Kolla. All rights reserved.
       </footer>
 
-      {/* resume modal */}
-      {showResumeModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg w-full max-w-4xl h-5/6 flex flex-col">
-            <div className="flex justify-between items-center p-4 border-b">
-              <h2 className="text-xl font-bold text-gray-800">Resume - Sohan Kolla</h2>
-              <button 
-                onClick={closeResumeModal}
-                className="text-gray-600 hover:text-gray-800 text-2xl font-bold"
-              >
-                x
-              </button>
-            </div>
-            <div className="flex-1 p-4">
-              <iframe 
-                src="https://docs.google.com/gview?url=https://github.com/sohankolla/portfolio/raw/resume/Sohan%20Kolla%20-%20Resume.pdf&embedded=true" 
-                className="w-full h-full border-0 rounded"
-                title="Sohan Kolla Resume"
-              />
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* motorcycle/road scrollbar css logic */}
-      <div className="custom-scrollbar">
+      {/* <div className="custom-scrollbar">
         <div className="road-track">
           <div 
             className={`motorcycle ${scrollDirection === 'up' ? 'motorcycle-up' : 'motorcycle-down'}`}
@@ -259,7 +122,7 @@ export default function App() {
             }}
           />
         </div>
-      </div>
+      </div> */}
     </div>
   )
 
